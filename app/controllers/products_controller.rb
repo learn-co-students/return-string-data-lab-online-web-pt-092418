@@ -6,7 +6,14 @@ class ProductsController < ApplicationController
 
   def body
     product = Product.find(params[:id])
+    #binding.pry
     render plain: product.description
+  end
+
+  def inventory
+    product = Product.find(params[:id])
+    inv = !!product.inventory ? "Available" : "Sold Out"
+    render plain: inv
   end
 
   def new

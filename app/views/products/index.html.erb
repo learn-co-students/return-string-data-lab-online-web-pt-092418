@@ -5,6 +5,7 @@
     <li>Product Name: <%= product.name %></li>
     <li id="body-<%= product.id %>">Description: <%= truncate product.description %></li>
     <li><button class="js-more" data-id="<%= product.id %>" type="button" name="button">More Info</button></li>
+    <li>Inventory: <%= !!product.inventory ? "Available" : "Sold Out" %></li>
   </ul>
 <% end %>
 

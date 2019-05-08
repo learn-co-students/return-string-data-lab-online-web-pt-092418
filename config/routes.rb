@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :products
   # get 'products', to: 'products#index'
   get 'products/:id/body', to: 'products#body'
+  get 'products/:id/inventory', to: 'products#inventory'
 
 
 end
