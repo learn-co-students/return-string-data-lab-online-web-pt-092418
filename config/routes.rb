@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'home', to: 'static#home'
   resources :orders
   resources :invoices
-  # resources :products
-  get 'products', to: 'products#index'
+  resources :products
+  # get 'products', to: 'products#index'
   get 'products/:id/body', to: 'products#body'
 
 
