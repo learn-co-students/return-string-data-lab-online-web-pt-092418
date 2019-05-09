@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def body
+  def description
     product = Product.find(params[:id])
     #binding.pry
     render plain: product.description
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def inventory
     product = Product.find(params[:id])
-    inv = !!product.inventory ? "Available" : "Sold Out"
+    inv = !!product.inventory ? "true" : "false"
     render plain: inv
   end
 
