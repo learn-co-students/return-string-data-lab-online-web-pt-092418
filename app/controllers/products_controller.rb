@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
 
   def description
     product = Product.find(params[:id])
-    #binding.pry
     render plain: product.description
   end
 
@@ -30,5 +29,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :price, :description, :inventory)
   end
-
 end #end of controller
