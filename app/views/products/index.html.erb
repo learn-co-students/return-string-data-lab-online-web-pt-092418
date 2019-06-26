@@ -1,1 +1,36 @@
+<% @products.each do |prod| %>
+  <h1><%= prod.id %>: <%= prod.name %></h1>
+  <div id="product-<%= prod.id %>"><%= truncate prod.description %></div>
 
+  <button class="js-more" data-id="<%= prod.id %>">More Info</button>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $(".js-more").on('click', function () {
+            const id= $(this).data('id');
+            $.get("/products/" + id + "/description", function (data) {
+                $("#product-" + id).append(data + '<br /><br />')
+                });
+            $.get("/products/" + id + "/inventory", function (data2) {
+                const ibody = (data2 === "true") ? "Available" : "Sold Out"
+                $("#product-" + id).append('<div> Inventory: ' + ibody + '</div>')
+            });
+        });
+    });
+</script>
+
+<!--<script type="text/javascript" charset="utf-8">-->
+<!--    $(function () {-->
+<!--        $('.js-more').on('click', function () {-->
+<!--            const id = $(this).data('id');-->
+<!--            $.get('/products/' + id + '/description', function (response) {-->
+<!--                $('#product-' + id).append(response + '<br /><br />')-->
+<!--            });-->
+<!--            $.get('/products/' + id + '/inventory', function (response) {-->
+<!--                const status =  (response === 'true') ? 'Available' : 'Sold Out'-->
+<!--                $('#product-' + id).append('<div> Inventory: ' + status + '</div>')-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
